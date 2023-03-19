@@ -41,7 +41,6 @@ class Main extends React.Component {
   };
 
   onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    debugger;
     this.setState({ inputValue: e.target.value });
     localStorage.setItem('inputValue', e.target.value);
   }
