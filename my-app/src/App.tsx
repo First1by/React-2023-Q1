@@ -1,21 +1,81 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import data from './data-products';
+import { Routes, Route, Link } from 'react-router-dom';
+import Aboutpage from './pages/Aboutpage';
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="/about" element={<Aboutpage />}></Route>
+          <Route path="*" element={<Aboutpage />} />
+        </Routes>
+        <Footer />
+      </div>
+    );
+  }
+}
+
+class Header extends React.Component {
+  render() {
+    return (
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React!
-        </a>
+        <Link className="App-link" to="">
+          Main page
+        </Link>
+        <Link className="App-link" to="/about">
+          About us
+        </Link>
       </header>
-    </div>
-  );
+    );
+  }
+}
+class Main extends React.Component {
+  render() {
+    return (
+      <section>
+        <h1>Main page</h1>
+        <div className="App-find">
+          <form>
+            <input type="text" placeholder="Find here..." />
+            <button type="submit"></button>
+          </form>
+        </div>
+        <div className="content">
+          {data.map((el) => (
+            <>
+              <div className="product">
+                <img className="car-image" src={`${el.url}`} alt="audi" />
+                <div>
+                  <h3>{el.title}</h3>
+                  <p>{el.type}</p>
+                  <div className="button">
+                    <a>Request a price</a>
+                  </div>
+                </div>
+              </div>
+            </>
+          ))}
+        </div>
+      </section>
+    );
+  }
+}
+class Footer extends React.Component {
+  render() {
+    return (
+      <footer>
+        <h3>AUDI 2023</h3>
+        <a href="https://rs.school/" target="_blank" rel="noreferrer">
+          <img src="./img/rs.png" alt="Rs School" />
+        </a>
+      </footer>
+    );
+  }
 }
 
 export default App;

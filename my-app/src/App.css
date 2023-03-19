@@ -2,37 +2,146 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
+  padding: 10px 20px;
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-end;
+  column-gap: 20px;
+  font-size: calc(10px + 1vmin);
   color: white;
 }
 
 .App-link {
   color: #61dafb;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-link:hover {
+  color: azure;
+}
+
+form {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.App-find input {
+  width: 100%;
+  height: 42px;
+  padding-left: 10px;
+  border: 2px solid #61dafb;
+  border-radius: 10px;
+  outline: none;
+  /* background: #f9f0da; */
+}
+
+.App-find button {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: #61dafb;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.App-find button:before {
+  display: block;
+  height: 25px;
+  content: '';
+  background: url(../public/icon-find.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 16px;
+  color: #f9f0da;
+}
+
+.content {
+  max-width: 1600px;
+  margin: 20px auto;
+  padding: 0 30px;
+  display: grid;
+  justify-content: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.product {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 17px 5px rgba(141, 139, 139, 0.281);
+  overflow: hidden;
+  transition: scale 0.4s;
+}
+
+.car-image {
+  width: 100%;
+  height: 60%;
+  object-fit: contain;
+  transition: scale 0.6s;
+}
+
+.product:hover .car-image {
+  scale: 1.2;
+  z-index: 100;
+}
+
+.button {
+  margin: 0 auto;
+  max-width: 70%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #f9f0da;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button a {
+  display: block;
+  text-decoration: none;
+  color: #282c34;
+}
+
+.button:hover {
+  background-color: coral;
+}
+
+footer {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  column-gap: 5%;
+  padding: 0px;
+  align-items: center;
+  background: #282c34;
+}
+
+footer h3 {
+  text-shadow: 0 0 10px #efbb1c, 0 0 4px #eae8ed, 0 0 4px #f2edf7, 0 0 4px #dbd2e3;
+}
+
+footer a {
+  text-shadow: 0 0 10px #efbb1c, 0 0 4px #eae8ed, 0 0 4px #f2edf7, 0 0 4px #dbd2e3;
+  color: #000;
+  text-decoration: none;
+}
+
+footer a img {
+  width: 80px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 5px saddlebrown;
 }
