@@ -1,14 +1,17 @@
 .App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
 .App-header {
-  padding: 10px 20px;
+  padding: 10px 10%;
   background-color: #282c34;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  column-gap: 20px;
+  column-gap: 2%;
   font-size: calc(10px + 1vmin);
   color: white;
 }
@@ -36,7 +39,6 @@ form {
   border: 2px solid #61dafb;
   border-radius: 10px;
   outline: none;
-  /* background: #f9f0da; */
 }
 
 .App-find button {
@@ -61,6 +63,10 @@ form {
   background-position: center;
   font-size: 16px;
   color: #f9f0da;
+}
+
+section {
+    flex: 1;
 }
 
 .content {
