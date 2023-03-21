@@ -18,3 +18,7 @@
   .App-link:hover {
     color: azure;
   }
+
+  .App-link.active {
+    color: azure;
+  }
