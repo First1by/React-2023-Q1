@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
-test('renders learn react link', () => {
+test('renders Main', () => {
   render(
     <BrowserRouter>
       <App />
@@ -13,7 +13,7 @@ test('renders learn react link', () => {
   expect(linkElement[0]).toBeInTheDocument();
 });
 
-test('renders learn react link', () => {
+test('renders About', () => {
   render(
     <BrowserRouter>
       <App />

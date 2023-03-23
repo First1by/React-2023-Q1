@@ -1,4 +1,4 @@
-import data from 'data-products';
+import data from '../../../../data-products';
 import React from 'react';
 import './card.css';
 
