@@ -12,6 +12,9 @@ class Header extends React.Component {
         <NavLink className="App-link" to="/about">
           About us
         </NavLink>
+        <NavLink className="App-link" to="/form">
+          Form
+        </NavLink>
       </header>
     );
   }

@@ -12,6 +12,9 @@ class Card extends React.Component {
             <div>
               <h3>{el.title}</h3>
               <p>{el.type}</p>
+              <p>
+                Color: <span className="color-car">{el.color}</span>
+              </p>
               <div className="button">
                 <a>Request a price</a>
               </div>

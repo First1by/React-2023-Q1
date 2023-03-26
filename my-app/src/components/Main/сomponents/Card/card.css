@@ -52,3 +52,7 @@
     background-color: coral;
   }
   
+  span.color-car {
+    font-style: italic;
+    font-weight: 600;
+  }

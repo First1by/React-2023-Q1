@@ -6,6 +6,7 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Main from './components/Main/Main';
+import FormPage from 'pages/FormPage';
 
 class App extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/about" element={<Aboutpage />}></Route>
+          <Route path="/form" element={<FormPage />} />
           <Route path="*" element={<Notfoundpage />} />
         </Routes>
         <Footer />
