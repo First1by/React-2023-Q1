@@ -3,42 +3,62 @@ import './Form.css';
 import Checkbox from './components/CheckboxInput/CheckboxInput';
 import DateInput from './components/DateInput/DateInput';
 import NameInput from './components/NameInput/NameInput';
-import GenderInput from './components/GenderInput/GenderInput';
+import SelectCountry from './components/SelectCountry/SelectCountry';
 import RadioInput from './components/RadioInput/RadioInput';
 import FileInput from './components/FileInput/FileInput';
 import Cards from './components/CardUser/CardUser';
 import { IForm, IFormData } from './components/CardUser/IForm';
 
 class Form extends React.Component<object, IForm> {
-  formRef: React.RefObject<HTMLFormElement>;
+  textRef: React.RefObject<HTMLInputElement>;
+  dateRef: React.RefObject<HTMLInputElement>;
+  countryRef: React.RefObject<HTMLSelectElement>;
+  agreementRef: React.RefObject<HTMLInputElement>;
+  fileRef: React.RefObject<HTMLInputElement>;
 
   constructor(props: object) {
     super(props);
     this.state = {
       name: '',
+      date: '',
+      country: '',
       image: '',
       cardArray: [],
     };
-    this.onChange = this.onChange.bind(this);
+    this.onTextChange = this.onTextChange.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.formRef = React.createRef();
+    this.textRef = React.createRef();
+    this.dateRef = React.createRef();
+    this.countryRef = React.createRef();
+    this.agreementRef = React.createRef();
+    this.fileRef = React.createRef();
   }
 
-  onChange(e: React.ChangeEvent<HTMLInputElement>) {
+  onTextChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = e.target.value;
     this.setState({ name: val });
+  }
+
+  onDateChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value;
+    this.setState({ date: val });
+  }
+
+  onSelectChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const val = e.target.value;
+    this.setState({ country: val });
   }
 
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     debugger;
-    alert('Имя: ' + this.state.name);
-
-    const text = this.formRef.current?.value;
-    const date = this.formRef.current?.value;
-    const country = this.formRef.current?.country.value;
-    const agreement = this.formRef.current?.agreement.checked;
-    const file = this.formRef.current?.file.value;
+    const text = this.textRef.current?.value as string;
+    const date = this.dateRef.current?.value as string;
+    const country = this.countryRef.current!.value;
+    const agreement = this.agreementRef.current?.value as unknown as boolean;
+    const file = this.fileRef.current?.value as string;
 
     const obj: IFormData = {
       text: text,
@@ -53,10 +73,10 @@ class Form extends React.Component<object, IForm> {
   render() {
     return (
       <>
-        <form ref={this.formRef} className="contact-form" onSubmit={this.handleSubmit}>
-          <NameInput value={this.state.name} onChange={this.onChange} />
-          <DateInput />
-          <GenderInput />
+        <form className="contact-form" onSubmit={this.handleSubmit}>
+          <NameInput Ref={this.textRef} value={this.state.name} onChange={this.onTextChange} />
+          <DateInput Ref={this.dateRef} value={this.state.date} onChange={this.onDateChange} />
+          <SelectCountry Ref={this.countryRef} value={this.state.country} onChange={this.onSelectChange} />
           <RadioInput />
           <Checkbox />
           <FileInput value={this.state.image} />

@@ -1,10 +1,6 @@
 import React from 'react';
 import './NameInput.css';
-
-interface TextInput {
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import TextInput from '../../../../../../interfaces/TextInput';
 
 class NameInput extends React.Component<TextInput> {
   constructor(props: TextInput) {
@@ -17,7 +13,13 @@ class NameInput extends React.Component<TextInput> {
           <label htmlFor="nameInput">
             <span>Name:</span>
           </label>
-          <input type="text" id="nameInput" value={this.props.value} onChange={this.props.onChange} />
+          <input
+            type="text"
+            id="nameInput"
+            ref={this.props.Ref}
+            value={this.props.value}
+            onChange={this.props.onChange}
+          />
         </div>
       </div>
     );

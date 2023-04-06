@@ -8,6 +8,8 @@ export interface IFormData {
 
 export interface IForm {
   name: string;
+  date: string;
+  country: string;
   image: string;
   cardArray: IFormData[];
 }
