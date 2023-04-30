@@ -15,6 +15,7 @@ class Form extends React.Component<object, IForm> {
   countryRef: React.RefObject<HTMLSelectElement>;
   agreementRef: React.RefObject<HTMLInputElement>;
   fileRef: React.RefObject<HTMLInputElement>;
+  radioRef: React.RefObject<HTMLFormElement>;
 
   constructor(props: object) {
     super(props);
@@ -22,6 +23,7 @@ class Form extends React.Component<object, IForm> {
       name: '',
       date: '',
       country: '',
+      radioInput: '',
       image: '',
       cardArray: [],
     };
@@ -32,6 +34,7 @@ class Form extends React.Component<object, IForm> {
     this.textRef = React.createRef();
     this.dateRef = React.createRef();
     this.countryRef = React.createRef();
+    this.radioRef = React.createRef();
     this.agreementRef = React.createRef();
     this.fileRef = React.createRef();
   }
@@ -51,12 +54,18 @@ class Form extends React.Component<object, IForm> {
     this.setState({ country: val });
   }
 
+  onRadioChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value;
+    this.setState({ radioInput: val });
+  }
+
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     debugger;
     const text = this.textRef.current?.value as string;
     const date = this.dateRef.current?.value as string;
     const country = this.countryRef.current!.value;
+    const radioContact = this.radioRef.current?.contact.value as string;
     const agreement = this.agreementRef.current?.value as unknown as boolean;
     const file = this.fileRef.current?.value as string;
 
@@ -64,6 +73,7 @@ class Form extends React.Component<object, IForm> {
       text: text,
       date: date,
       country: country,
+      radioContact: radioContact,
       agreement: agreement,
       file: file,
     };
@@ -77,7 +87,7 @@ class Form extends React.Component<object, IForm> {
           <NameInput Ref={this.textRef} value={this.state.name} onChange={this.onTextChange} />
           <DateInput Ref={this.dateRef} value={this.state.date} onChange={this.onDateChange} />
           <SelectCountry Ref={this.countryRef} value={this.state.country} onChange={this.onSelectChange} />
-          <RadioInput />
+          <RadioInput Ref={this.radioRef} onChange={this.onRadioChange} />
           <Checkbox />
           <FileInput value={this.state.image} />
           <input type="submit" value="Submit" />

@@ -10,6 +10,7 @@ class Cards extends React.Component<IFormData> {
           <p>Name: {this.props.text}</p>
           <p>Country: {this.props.country}</p>
           <p>Date: {this.props.date}</p>
+          <p>Contact: {this.props.radioContact}</p>
         </div>
       </div>
     );

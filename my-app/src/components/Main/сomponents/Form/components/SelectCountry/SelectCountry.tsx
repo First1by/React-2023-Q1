@@ -5,7 +5,6 @@ import './GenderInput.css';
 class SelectCountry extends React.Component<ICountrySelect> {
   constructor(props: ICountrySelect) {
     super(props);
-    debugger;
   }
   render() {
     return (

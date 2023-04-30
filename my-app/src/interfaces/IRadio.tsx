@@ -1,9 +1,9 @@
 import React from 'react';
 
-interface TextInput {
-  Ref: React.RefObject<HTMLInputElement>;
+interface IRadio {
+  Ref: React.RefObject<HTMLFormElement>;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default TextInput;
+export default IRadio;
