@@ -1,0 +1,48 @@
+.form-search {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.form-search:hover {
+  outline: 1px solid steelblue;
+  border-radius: 5px;
+}
+
+.form-search input {
+  width: 100%;
+  height: 42px;
+  padding-left: 10px;
+  border: 2px solid #61dafb;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-search button {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: #61dafb;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.1s linear;
+}
+
+.form-search button:before {
+  display: block;
+  height: 25px;
+  content: '';
+  background: url(../../../../../public/icon-find.png);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 16px;
+  color: #f9f0da;
+}
+
+.form-search button:hover {
+  background-color: peru;
+}

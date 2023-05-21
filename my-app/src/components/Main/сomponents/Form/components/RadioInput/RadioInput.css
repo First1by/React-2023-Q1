@@ -1,0 +1,9 @@
+.label-radio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input[name='contact'] {
+  margin-left: 0px;
+}

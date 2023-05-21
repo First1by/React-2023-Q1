@@ -1,0 +1,8 @@
+div.file-load {
+  display: flex;
+  flex-direction: column;
+}
+
+div.file-load label {
+  align-self: flex-start;
+}
