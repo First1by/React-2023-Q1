@@ -12,6 +12,7 @@ export interface IForm {
   date: string;
   country: string;
   radioInput: string;
+  checkboxInput: string;
   image: string;
   cardArray: IFormData[];
 }

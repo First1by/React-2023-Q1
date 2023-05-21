@@ -13,7 +13,7 @@ class Form extends React.Component<object, IForm> {
   textRef: React.RefObject<HTMLInputElement>;
   dateRef: React.RefObject<HTMLInputElement>;
   countryRef: React.RefObject<HTMLSelectElement>;
-  agreementRef: React.RefObject<HTMLInputElement>;
+  checkboxRef: React.RefObject<HTMLInputElement>;
   fileRef: React.RefObject<HTMLInputElement>;
   radioRef: React.RefObject<HTMLFormElement>;
 
@@ -24,18 +24,20 @@ class Form extends React.Component<object, IForm> {
       date: '',
       country: '',
       radioInput: '',
+      checkboxInput: '',
       image: '',
       cardArray: [],
     };
     this.onTextChange = this.onTextChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
+    // this.onCheckboxChange = this.onCheckboxChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.textRef = React.createRef();
     this.dateRef = React.createRef();
     this.countryRef = React.createRef();
     this.radioRef = React.createRef();
-    this.agreementRef = React.createRef();
+    this.checkboxRef = React.createRef();
     this.fileRef = React.createRef();
   }
 
@@ -59,6 +61,20 @@ class Form extends React.Component<object, IForm> {
     this.setState({ radioInput: val });
   }
 
+  onCheckboxChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value;
+    this.setState({ checkboxInput: val });
+  }
+
+  //   validateCheckbox(checkbox: boolean) {
+  //     if (!checkbox) {
+  //       this.setState({ checkboxInput: 'Agree consent to my personal data' });
+  //       return false;
+  //     }
+  //     this.setState({ checkboxInput: '' });
+  //     return true;
+  //   }
+
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     debugger;
@@ -66,18 +82,23 @@ class Form extends React.Component<object, IForm> {
     const date = this.dateRef.current?.value as string;
     const country = this.countryRef.current!.value;
     const radioContact = this.radioRef.current?.contact.value as string;
-    const agreement = this.agreementRef.current?.value as unknown as boolean;
+    // const agreement = this.agreementRef.current?.value as unknown as boolean;
+    const checkbox = this.checkboxRef.current?.checked;
     const file = this.fileRef.current?.value as string;
 
-    const obj: IFormData = {
-      text: text,
-      date: date,
-      country: country,
-      radioContact: radioContact,
-      agreement: agreement,
-      file: file,
-    };
-    this.setState({ cardArray: [...this.state.cardArray, obj] });
+    // const checkboxValid = this.validateCheckbox(checkbox);
+
+    if (checkbox) {
+      const obj: IFormData = {
+        text: text,
+        date: date,
+        country: country,
+        radioContact: radioContact,
+        agreement: checkbox,
+        file: file,
+      };
+      this.setState({ cardArray: [...this.state.cardArray, obj] });
+    }
   }
 
   render() {
@@ -88,7 +109,7 @@ class Form extends React.Component<object, IForm> {
           <DateInput Ref={this.dateRef} value={this.state.date} onChange={this.onDateChange} />
           <SelectCountry Ref={this.countryRef} value={this.state.country} onChange={this.onSelectChange} />
           <RadioInput Ref={this.radioRef} onChange={this.onRadioChange} />
-          <Checkbox />
+          <Checkbox Ref={this.checkboxRef} onChange={this.onCheckboxChange.bind(this)} />
           <FileInput value={this.state.image} />
           <input type="submit" value="Submit" />
         </form>

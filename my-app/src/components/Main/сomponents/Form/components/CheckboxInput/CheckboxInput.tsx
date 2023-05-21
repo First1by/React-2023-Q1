@@ -1,7 +1,8 @@
+import ICheckbox from 'interfaces/ICheckbox';
 import React from 'react';
 import './CheckboxInput.css';
 
-class Checkbox extends React.Component {
+class Checkbox extends React.Component<ICheckbox> {
   render() {
     return (
       <div className="input-wrapper">
@@ -9,7 +10,14 @@ class Checkbox extends React.Component {
           <span>Agreement</span>
         </div>
         <div className="checkbox-input">
-          <input type="checkbox" id="checkbox" />
+          <input
+            type="checkbox"
+            ref={this.props.Ref}
+            value={this.props.value}
+            onChange={this.props.onChange}
+            id="checkbox"
+            name="checkbox"
+          />
           <label htmlFor="checkbox">I consent to my personal data</label>
         </div>
       </div>

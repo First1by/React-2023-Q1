@@ -14,3 +14,11 @@ input[type='submit'] {
 span {
   font-weight: 500;
 }
+
+.no_validate {
+  border: 1px solid black;
+  border-color: red;
+}
+.validate {
+  border: 1px solid black;
+}
